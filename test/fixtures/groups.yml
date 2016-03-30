@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  retardment: 1
+  time_limit: 2016-03-30 03:12:09
+
+two:
+  name: MyString
+  retardment: 1
+  time_limit: 2016-03-30 03:12:09
