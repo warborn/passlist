@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330031209) do
+ActiveRecord::Schema.define(version: 20160330054518) do
+
+  create_table "classdays", force: :cascade do |t|
+    t.string   "day"
+    t.time     "begin_time"
+    t.time     "end_time"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "classdays", ["group_id"], name: "index_classdays_on_group_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"

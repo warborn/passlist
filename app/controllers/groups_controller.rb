@@ -8,7 +8,11 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
 
-    render json: @tables
+    render json: @groups
+  end
+
+  def show
+    render json: @group
   end
 
   # POST /tables
@@ -29,7 +33,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      head :no_content
+      render json: @group, status: 200, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
@@ -38,7 +42,7 @@ class GroupsController < ApplicationController
   # DELETE /tables/1
   # DELETE /tables/1.json
 
-  def delete
+  def destroy
     @group.destroy
 
     head :no_content
