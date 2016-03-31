@@ -12,7 +12,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-    render json: @group
+    render json: {
+      "group": serialize(@group),
+      "classes": serialize(@group.classes)
+    }
   end
 
   # POST /tables
@@ -56,6 +59,16 @@ class GroupsController < ApplicationController
 
     def group_params
       params.require(:group).permit(:name, :retardment, :time_limit)
+    end
+
+    def serialize(object)
+      if object.is_a?(Array)
+        object.map do |item|
+          ActiveModel::SerializableResource.new(item)
+        end
+      else
+        ActiveModel::SerializableResource.new(object)
+      end
     end
 
 end
