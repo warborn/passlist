@@ -8,8 +8,9 @@
 
 group = Group.create(name: "2101", retardment: 0, time_limit: "10:15")
 
-monday = group.classdays.create(day: "Lunes", begin_time: "08:00", end_time: "10:00")
-friday = group.classdays.create(day: "Viernes", begin_time: "12:00", end_time: "14:00")
+group.classdays.create(day: "Lunes", begin_time: "08:00", end_time: "10:00")
+group.classdays.create(day: "Miercoles", begin_time: "10:00", end_time: "12:00")
+group.classdays.create(day: "Viernes", begin_time: "12:00", end_time: "14:00")
 
 begin_date = Date.parse("2016-02-01")
 end_date   = Date.parse("2016-05-27")

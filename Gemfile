@@ -6,6 +6,7 @@ gem 'rails-api'
 gem 'spring', :group => :development
 gem 'sqlite3'
 gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'hirb', '~> 0.7.3'

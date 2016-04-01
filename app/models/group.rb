@@ -13,8 +13,10 @@ class Group < ActiveRecord::Base
   # end
 
   def add_class_to_day(new_class)
-    english_day = new_class.date.strftime("%A")
-    spanish_day = day_english_to_spanish(english_day)
+    # english_day = new_class.date.strftime("%A")
+    # spanish_day = day_english_to_spanish(english_day)
+    spanish_day = I18n.l(new_class.date, format: "%A")
+    puts spanish_day
 
     classdays.each do |classday|
       if classday.day == spanish_day
@@ -37,15 +39,15 @@ class Group < ActiveRecord::Base
     #   end
     # end
 
-    def day_english_to_spanish(english_day)
-      spanish_day = case english_day.downcase
-      when 'monday' then 'Lunes'
-      when 'tuesday' then 'Martes'
-      when 'wednesday' then 'Miercoles'
-      when 'thursday' then 'Jueves'
-      when 'friday' then 'Viernes'
-      when 'saturday' then 'Sabado'
-      when 'sunday' then 'Domingo'
-      end
-    end
+    # def day_english_to_spanish(english_day)
+    #   spanish_day = case english_day.downcase
+    #   when 'monday' then 'Lunes'
+    #   when 'tuesday' then 'Martes'
+    #   when 'wednesday' then 'Miercoles'
+    #   when 'thursday' then 'Jueves'
+    #   when 'friday' then 'Viernes'
+    #   when 'saturday' then 'Sabado'
+    #   when 'sunday' then 'Domingo'
+    #   end
+    # end
 end

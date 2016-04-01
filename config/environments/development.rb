@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Configures the locales that will be loaded from the i18n gem
+  config.i18n.available_locales = :es
 end
