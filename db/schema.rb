@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331202831) do
+ActiveRecord::Schema.define(version: 20160404161114) do
+
+  create_table "assists", force: :cascade do |t|
+    t.boolean  "assist",          default: false
+    t.integer  "student_id"
+    t.integer  "course_class_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "assists", ["course_class_id"], name: "index_assists_on_course_class_id"
+  add_index "assists", ["student_id"], name: "index_assists_on_student_id"
 
   create_table "classdays", force: :cascade do |t|
     t.string   "day"
@@ -40,6 +51,23 @@ ActiveRecord::Schema.define(version: 20160331202831) do
     t.time     "time_limit"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "groups_students", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "student_id"
+  end
+
+  add_index "groups_students", ["group_id"], name: "index_groups_students_on_group_id"
+  add_index "groups_students", ["student_id"], name: "index_groups_students_on_student_id"
+
+  create_table "students", force: :cascade do |t|
+    t.string   "account_number"
+    t.string   "last_name"
+    t.string   "maiden_name"
+    t.string   "first_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

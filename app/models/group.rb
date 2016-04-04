@@ -8,6 +8,8 @@ class Group < ActiveRecord::Base
                      foreign_key: "classday_id",
                      source: :course_classes # name of the association in Classday model
 
+  has_and_belongs_to_many :students
+
   # def classes
   #   CourseClass.where(classday_id: classdays.map(&:id))
   # end
@@ -16,7 +18,6 @@ class Group < ActiveRecord::Base
     # english_day = new_class.date.strftime("%A")
     # spanish_day = day_english_to_spanish(english_day)
     spanish_day = I18n.l(new_class.date, format: "%A")
-    puts spanish_day
 
     classdays.each do |classday|
       if classday.day == spanish_day
