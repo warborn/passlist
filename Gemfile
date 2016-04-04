@@ -11,6 +11,7 @@ gem 'rails-i18n'
 group :development, :test do
   gem 'hirb', '~> 0.7.3'
   gem 'byebug', '~> 8.2', '>= 8.2.2'
+  gem 'faker', '~> 1.6', '>= 1.6.3'
 end
 
 # To use ActiveModel has_secure_password

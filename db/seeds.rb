@@ -9,7 +9,7 @@
 group = Group.create(name: "2101", retardment: 0, time_limit: "10:15")
 
 group.classdays.create(day: "Lunes", begin_time: "08:00", end_time: "10:00")
-group.classdays.create(day: "Miercoles", begin_time: "10:00", end_time: "12:00")
+group.classdays.create(day: "Miércoles", begin_time: "10:00", end_time: "12:00")
 group.classdays.create(day: "Viernes", begin_time: "12:00", end_time: "14:00")
 
 begin_date = Date.parse("2016-02-01")
@@ -19,6 +19,12 @@ counter = 0
 while((current_date = begin_date + counter) <= end_date)
   group.add_class_to_day(CourseClass.new(date: current_date.to_s))
   counter += 1
+end
+
+40.times do |i|
+  str = i.to_s.rjust(2, "0")
+  student = Student.new(account_number: "3#{str}306064", last_name: Faker::Name.last_name, maiden_name: Faker::Name.last_name, first_name: Faker::Name.first_name)
+  group.students << student
 end
 
 # monday.course_classes.create(date: "2016-02-01")
