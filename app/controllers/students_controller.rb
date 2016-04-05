@@ -32,7 +32,11 @@ class StudentsController < ApplicationController
     @import = Student::Import.new(student_import_params)
 
     if @import.save
-      render json: {"status": "saved"}, status: :created
+      render json: {
+        imported_count: @import.imported_count,
+        updated_count: @import.updated_count,
+        imported_students: Student::Import.serialize_students(@import.imported_students)
+      }, status: :created
     else
       render json: {"status": "error"}
     end
