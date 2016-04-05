@@ -28,4 +28,20 @@ class StudentsController < ApplicationController
     end
   end
 
+  def import
+    @import = Student::Import.new(student_import_params)
+
+    if @import.save
+      render json: {"status": "saved"}, status: :created
+    else
+      render json: {"status": "error"}
+    end
+  end
+
+  private
+
+    def student_import_params
+      params.require(:student_import).permit(:file)
+    end
+
 end

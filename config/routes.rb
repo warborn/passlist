@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   post "groups/:group_id/students", to: "students#create"
   patch "classes/:course_class_id/students/:id/assist", to: "students#assist"
+  post "groups/:group_id/students/import", to: "students#import"
 end
