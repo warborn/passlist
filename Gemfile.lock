@@ -69,6 +69,7 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -124,6 +125,7 @@ DEPENDENCIES
   byebug (~> 8.2, >= 8.2.2)
   faker (~> 1.6, >= 1.6.3)
   hirb (~> 0.7.3)
+  rack-cors
   rails (= 4.2.1)
   rails-api
   rails-i18n
