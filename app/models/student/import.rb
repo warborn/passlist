@@ -1,7 +1,7 @@
 class Student::Import
   include ActiveModel::Model
 
-  attr_accessor :file, :imported_count, :updated_count, :new_record, :imported_students
+  attr_accessor :file, :imported_count, :updated_count, :new_record, :imported_students, :group
 
   def process!
     @imported_count = 0
@@ -10,6 +10,14 @@ class Student::Import
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
       student = Student.assign_from_row(row)
       @new_record = student.new_record?
+      @group.students << student unless @group.students.include?(student)
+
+      @group.classes.each do |course_class|
+        if course_class.has_assists?
+          course_class.assists <<  Assist.new(student_id: student.id, course_class_id: course_class.id)
+        end
+      end
+
       if student.save
         if @new_record
           @imported_count+= 1
