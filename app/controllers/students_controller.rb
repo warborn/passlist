@@ -13,13 +13,13 @@ class StudentsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @student = Student.new(params.require(:student).permit(:last_name, :maiden_name, :first_name, :account_number))
+    @student = Student.new(student_params)
 
     if @student.save
       @group.students << @student
       @group.classes.each do |course_class|
         if course_class.assists.size > 0
-          course_class.assists << Assist.new(course_class_id: course_class.id, student_id: @student.id)
+          course_class.add_assist_for(@student)
         end
       end
       render json: @student, status: :created
@@ -47,6 +47,10 @@ class StudentsController < ApplicationController
 
     def student_import_params
       params.require(:student_import).permit(:file)
+    end
+
+    def student_params
+      params.require(:student).permit(:last_name, :maiden_name, :first_name, :account_number)
     end
 
 end

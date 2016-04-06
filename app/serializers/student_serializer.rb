@@ -3,6 +3,7 @@ class StudentSerializer < ActiveModel::Serializer
 
   def attributes(*args)
      hash = super
+     # Conditionally set the assist (true/false) attribute of the student if a current class is given
      hash[:assist] = assist if object.current_class
      hash
   end

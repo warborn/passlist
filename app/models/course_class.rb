@@ -6,4 +6,14 @@ class CourseClass < ActiveRecord::Base
   def has_assists?
     self.assists.size > 0
   end
+
+  def add_assist_for(object)
+    if object.respond_to?("each")
+      object.each do |student|
+        Assist.where(course_class_id: self.id, student_id: student.id).first_or_create
+      end
+    else
+      Assist.where(course_class_id: self.id, student_id: object.id).first_or_create
+    end
+  end
 end

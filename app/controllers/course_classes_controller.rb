@@ -11,9 +11,6 @@ class CourseClassesController < ApplicationController
   end
 
   def show
-    # @course_class = CourseClass.find(params[:id])
-    @students = @course_class.group.students unless @students
-
     @students.each do |student|
       student.current_class = @course_class
     end
@@ -29,11 +26,7 @@ class CourseClassesController < ApplicationController
   private
     def generate_assists
       @course_class = CourseClass.find(params[:id])
-      unless @course_class.has_assists?
-        @students = @course_class.group.students
-        @students.each do |student|
-          Assist.create(student_id: student.id, course_class_id: @course_class.id)
-        end
-      end
+      @students = @course_class.group.students
+      @course_class.add_assist_for(@students)
     end
 end

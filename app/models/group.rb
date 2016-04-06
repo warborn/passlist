@@ -26,6 +26,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def add_new_student(student)
+    self.students << student unless self.students.include?(student)
+  end
+
   private
 
     # def day_spanish_to_english(spanish_day)
