@@ -1,6 +1,6 @@
 class CourseClass < ActiveRecord::Base
   belongs_to :classday
-  has_many :assists
+  has_many :assists, dependent: :destroy
   has_one :group, through: :classday
 
   def has_assists?

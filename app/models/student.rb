@@ -2,8 +2,8 @@ class Student < ActiveRecord::Base
   # The current class for the student
   attr_accessor :current_class
 
-  has_many :assists
-
+  has_many :assists, dependent: :destroy
+  has_and_belongs_to_many :groups
   # Serialize a student through ActiveModelSerializers
   def self.serialize(student)
     ActiveModel::SerializableResource.new(student)

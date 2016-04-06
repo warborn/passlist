@@ -1,6 +1,6 @@
 class Group < ActiveRecord::Base
   # A group has many class days
-  has_many :classdays
+  has_many :classdays, dependent: :destroy
   # A group has many classes specified through the class day
   has_many :classes, -> { order "date ASC" },
                      through: :classdays,

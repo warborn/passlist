@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404161114) do
+ActiveRecord::Schema.define(version: 20160406135707) do
 
   create_table "assists", force: :cascade do |t|
     t.boolean  "assist",          default: false
