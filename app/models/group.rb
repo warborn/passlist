@@ -30,6 +30,21 @@ class Group < ActiveRecord::Base
     self.students << student unless self.students.include?(student)
   end
 
+  def generate_calendar!(classdays)
+    classdays.each do |classday|
+      self.classdays << Classday.new(day: classday["day"], begin_time: classday["begin_time"], end_time: classday["end_time"])
+    end
+
+    begin_date = Date.parse("2016-02-01")
+    end_date   = Date.parse("2016-05-27")
+    counter = 0
+
+    while((current_date = begin_date + counter) <= end_date)
+      self.add_class_to_day(CourseClass.new(date: current_date.to_s))
+      counter += 1
+    end
+  end
+
   private
 
     # def day_spanish_to_english(spanish_day)

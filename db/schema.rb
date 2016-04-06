@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406135707) do
+ActiveRecord::Schema.define(version: 20160406160233) do
 
   create_table "assists", force: :cascade do |t|
     t.boolean  "assist",          default: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160406135707) do
     t.time     "time_limit"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "subject"
   end
 
   create_table "groups_students", force: :cascade do |t|

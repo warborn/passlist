@@ -25,7 +25,11 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      render json: @group, status: :created, location: @group
+      @group.generate_calendar!(params[:classdays])
+      render json: {
+        "groups": serialize(@group),
+        "classdays": serialize(@group.classdays)
+        }, status: :created, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
