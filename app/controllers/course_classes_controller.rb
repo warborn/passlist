@@ -18,7 +18,12 @@ class CourseClassesController < ApplicationController
       student.current_class = @course_class
     end
 
-    render json: @course_class
+    # byebug
+
+    render json: {
+      "classes": serialize(@course_class),
+      "students": serialize(@students)
+    }
   end
 
   private

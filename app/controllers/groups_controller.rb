@@ -61,14 +61,4 @@ class GroupsController < ApplicationController
       params.require(:group).permit(:name, :retardment, :time_limit)
     end
 
-    def serialize(object)
-      if object.is_a?(Array)
-        object.map do |item|
-          ActiveModel::SerializableResource.new(item)
-        end
-      else
-        ActiveModel::SerializableResource.new(object)
-      end
-    end
-
 end

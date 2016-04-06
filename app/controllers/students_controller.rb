@@ -30,12 +30,13 @@ class StudentsController < ApplicationController
 
   def import
     @import = Student::Import.new(student_import_params)
+    @import.group = Group.find(params[:group_id])
 
     if @import.save
       render json: {
         imported_count: @import.imported_count,
         updated_count: @import.updated_count,
-        imported_students: Student::Import.serialize_students(@import.imported_students)
+        imported_students: serialize(@import.imported_students)
       }, status: :created
     else
       render json: {"status": "error"}

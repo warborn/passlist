@@ -37,9 +37,4 @@ class Student::Import
     errors.none?
   end
 
-  def self.serialize_students(students)
-    students.map do |student|
-      ActiveModel::SerializableResource.new(student)
-    end
-  end
 end

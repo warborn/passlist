@@ -21,7 +21,7 @@ while((current_date = begin_date + counter) <= end_date)
   counter += 1
 end
 
-40.times do |i|
+10.times do |i|
   str = i.to_s.rjust(2, "0")
   student = Student.new(account_number: "3#{str}306064", last_name: Faker::Name.last_name, maiden_name: Faker::Name.last_name, first_name: Faker::Name.first_name)
   group.students << student
