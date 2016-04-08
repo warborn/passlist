@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'active_model_serializers', github: "rails-api/active_model_serializers"
 gem 'rails-i18n'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'devise_token_auth'
 
 group :development, :test do
   gem 'hirb', '~> 0.7.3'
