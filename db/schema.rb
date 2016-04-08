@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406224048) do
+ActiveRecord::Schema.define(version: 20160408163808) do
 
   create_table "assists", force: :cascade do |t|
     t.boolean  "assist",          default: false
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20160406224048) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "subject"
+    t.date     "begin_date"
+    t.date     "end_date"
   end
 
   create_table "groups_students", force: :cascade do |t|

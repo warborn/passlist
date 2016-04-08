@@ -34,11 +34,10 @@ class Group < ActiveRecord::Base
     classdays.each do |classday|
       self.classdays << Classday.new(day: classday["day"], begin_time: classday["begin_time"], end_time: classday["end_time"])
     end
-
-    begin_date = Date.parse("2016-02-01")
-    end_date   = Date.parse("2016-05-27")
+    #
+    # begin_date = Date.parse("2016-02-01")
+    # end_date   = Date.parse("2016-05-27")
     counter = 0
-
     while((current_date = begin_date + counter) <= end_date)
       self.add_class_to_day(CourseClass.new(date: current_date.to_s))
       counter += 1

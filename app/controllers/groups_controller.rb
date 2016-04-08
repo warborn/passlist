@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :retardment, :time_limit)
+      params.require(:group).permit(:name, :retardment, :time_limit, :subject, :begin_date, :end_date)
     end
 
 end
