@@ -3,6 +3,8 @@ class CourseClass < ActiveRecord::Base
   has_many :assists, dependent: :destroy
   has_one :group, through: :classday
 
+  validates :date, presence: true
+
   def has_assists?
     self.assists.size > 0
   end

@@ -1,5 +1,5 @@
 class GroupSerializer < ActiveModel::Serializer
-  attributes :id, :name, :retardment, :time_limit
+  attributes :id, :name, :subject, :retardment, :time_limit, :begin_date, :end_date
 
   # has_many :classes
 

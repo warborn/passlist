@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-
+  # before_action :authenticate_user!
   def assist
     @course_class = CourseClass.find(params[:course_class_id])
     @student = Student.find(params[:id])
@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
         imported_students: serialize(@import.imported_students)
       }, status: :created
     else
-      render json: {"status": "error"}
+      render json: @import.errors
     end
   end
 

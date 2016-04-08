@@ -1,5 +1,5 @@
 class ClassdaysController < ApplicationController
-
+  # before_action :authenticate_user!
   before_action :set_classday, only: [:update, :destroy]
 
   # GET /groups/:group_id/classdays

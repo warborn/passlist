@@ -1,4 +1,5 @@
 class CourseClassesController < ApplicationController
+  # before_action :authenticate_user!
   before_action :generate_assists, only: [:show]
 
   def active
@@ -14,8 +15,6 @@ class CourseClassesController < ApplicationController
     @students.each do |student|
       student.current_class = @course_class
     end
-
-    # byebug
 
     render json: {
       "classes": serialize(@course_class),

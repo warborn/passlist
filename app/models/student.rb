@@ -4,6 +4,11 @@ class Student < ActiveRecord::Base
 
   has_many :assists, dependent: :destroy
   has_and_belongs_to_many :groups
+
+  validates :account_number, presence: true
+  validates :last_name, presence: true
+  validates :maiden_name, presence: true
+  validates :first_name, presence: true
   # Serialize a student through ActiveModelSerializers
   def self.serialize(student)
     ActiveModel::SerializableResource.new(student)
