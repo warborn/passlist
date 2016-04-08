@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], controllers: {
-                                registrations:  'registrations'
+                                registrations:  'registrations',
+                                sessions:       'sessions'
                               }
-                              
+
   resources :groups, except: [:new, :edit] do
     resources :classdays, except: [:show, :new, :edit]
   end
