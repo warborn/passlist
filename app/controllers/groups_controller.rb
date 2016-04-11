@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   def show
     render json: {
       "group": serialize(@group),
-      "classes": serialize(@group.classes)
+      "classes": serialize(@group.classes.sort_by(&:date))
     }
   end
 
@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      @group.generate_calendar!(params[:classdays])
+      @group.generate_calendar!
       render json: {
         "groups": serialize(@group),
         "classdays": serialize(@group.classdays)
@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :retardment, :time_limit, :subject, :begin_date, :end_date)
+      params.require(:group).permit(:name, :retardment, :time_limit, :subject, :begin_date, :end_date, classdays_attributes: [:day, :begin_time, :end_time])
     end
 
 end

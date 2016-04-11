@@ -10,6 +10,8 @@ class Group < ActiveRecord::Base
 
   has_and_belongs_to_many :students
 
+  accepts_nested_attributes_for :classdays
+
   # Validation
   validates :name, presence: true
   validates :time_limit, presence: true
@@ -21,31 +23,41 @@ class Group < ActiveRecord::Base
   #   CourseClass.where(classday_id: classdays.map(&:id))
   # end
 
-  def add_class_to_day(new_class)
-    # english_day = new_class.date.strftime("%A")
-    # spanish_day = day_english_to_spanish(english_day)
-    spanish_day = I18n.l(new_class.date, format: "%A")
-
-    classdays.each do |classday|
-      if classday.day == spanish_day
-        classday.course_classes << new_class
+  def add_classes_to_day(classday)
+    counter = 0
+    day_found = false
+    while((current_date = begin_date + counter) <= end_date)
+      spanish_day = I18n.l(current_date, format: "%A")
+      if(!day_found && (spanish_day == classday.day))
+        day_found = true
+      elsif(day_found)
+        classday.course_classes << CourseClass.new(date: current_date)
+        counter += 7
+      else
+        counter += 1
       end
     end
+    # english_day = new_class.date.strftime("%A")
+    # spanish_day = day_english_to_spanish(english_day)
   end
 
   def add_new_student(student)
     self.students << student unless self.students.include?(student)
   end
 
-  def generate_calendar!(classdays)
-    classdays.each do |classday|
-      self.classdays << Classday.new(day: classday["day"], begin_time: classday["begin_time"], end_time: classday["end_time"])
-    end
-    
-    counter = 0
-    while((current_date = begin_date + counter) <= end_date)
-      self.add_class_to_day(CourseClass.new(date: current_date.to_s))
-      counter += 1
+  # def generate_calendar!
+  #   counter = 0
+  #   while((current_date = begin_date + counter) <= end_date)
+  #     self.add_class_to_day(CourseClass.new(date: current_date.to_s))
+  #     counter += 1
+  #   end
+  # end
+
+  def generate_calendar!
+    self.classdays.each do |classday|
+      if classday.course_classes.empty?
+        self.add_classes_to_day(classday)
+      end
     end
   end
 

@@ -8,7 +8,7 @@ class ClassdaysController < ApplicationController
   def index
     @classdays = Classday.all
 
-    render json: @classdays
+    render json: @classdays.sort_days
   end
 
   # POST /groups/:group_id/classdays
@@ -16,12 +16,12 @@ class ClassdaysController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @classday = @group.classdays.build(classday_params)
 
-    if @classday.save
-      render json: @classday, status: :created, location: group_classdays_url(@classday)
+    if @group.update_attributes(classdays_params)
+      @group.generate_calendar!
+      render json: @group.classdays, status: :created
     else
-      render json: @classday.errors, status: :unprocessable_entity
+      render json: @group.errors, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,10 @@ class ClassdaysController < ApplicationController
 
     def set_classday
       @classday = Classday.find(params[:id])
+    end
+
+    def classdays_params
+      params.require(:group).permit(classdays_attributes: [:day, :begin_time, :end_time])
     end
 
     def classday_params
