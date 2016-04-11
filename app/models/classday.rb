@@ -8,11 +8,13 @@ class Classday < ActiveRecord::Base
   validates :day, presence: true
   validates :begin_time, presence: true
   validates :end_time, presence: true
-  validate :unique_classday_for_group, on: :create
+  validate :unique_classday_for_group
 
   def unique_classday_for_group
     if self.group
-      self.errors.add(:day, 'is already taken') if group.classdays.where(day: self.day).exists?
+      if day_changed?
+        self.errors.add(:day, 'is already taken') if group.classdays.where(day: self.day).exists?
+      end
     end
   end
 end
