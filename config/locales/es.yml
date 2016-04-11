@@ -1,9 +1,9 @@
 es:
-  faker:
-    name:
-      first_name: [Iván, Pablo, Miguel, Emily, Rosa, Alicia, Patricia, Marta, Alejandra, Paula, Paola, José Luis, Juan, José, Francisco, Jesús, Antonio, Pedro, Manuel, Cristian, Angel, Enrique, Octavio, Raul, Arturo, Gerardo, David, Maria, Fernando, Nayeli, Monica, Geronimo, Jeronimo, Diana, Juana, Sandra, Fernanda, Irene, Luis, Gerardo, Armando, Mariel, Paloma, Cesar, Aaron, Emiliano, Victoria, Rebeca, Daniel, Martin, Lucas, Iker, Gabriel, Adrian, Bruno, Dylan, Leonardo, Joaquin]
+  # faker:
+    # name:
+      # first_name: [Iván, Pablo, Miguel, Emily, Rosa, Alicia, Patricia, Marta, Alejandra, Paula, Paola, José Luis, Juan, José, Francisco, Jesús, Antonio, Pedro, Manuel, Cristian, Angel, Enrique, Octavio, Raul, Arturo, Gerardo, David, Maria, Fernando, Nayeli, Monica, Geronimo, Jeronimo, Diana, Juana, Sandra, Fernanda, Irene, Luis, Gerardo, Armando, Mariel, Paloma, Cesar, Aaron, Emiliano, Victoria, Rebeca, Daniel, Martin, Lucas, Iker, Gabriel, Adrian, Bruno, Dylan, Leonardo, Joaquin]
       # first_name: [Munguia, Cruz, Gomez, Gonzalez, Monroy, Reyez, Lozano, Garcia, Perez, Ramirez, Serrano, Sanabria, Chavez, Roman, Hernandez, Marin, Miranda, Magdaleno, Ortiz]
-      last_name: [Munguia, Cruz, Gomez, Gonzalez, Monroy, Reyez, Lozano, Garcia, Perez, Ramirez, Serrano, Sanabria, Chavez, Roman, Hernandez, Marin, Miranda, Magdaleno, Ortiz, Juarez, Medina, Mendoza, Luna, Lopez, Rodriguez, Alvarez, Sanchez, Martin, Jimenez, Ruiz, Diaz, Moreno, Muñoz, Romero, Alonso, Gutierrez, Torres, Dominguez, Vazquez, Ramos, Gil, Blanco, Castro, Ortiz, Rubio, Nuñez, Sanz, Castillo, Prieto, Calvo, Gallego, Leon, Flores, Campos, Vega, Diez, Fuentes, Mora, Santiago, Carmona, Pastor, Soto, Bravo, Rojas]
+      # last_name: [Munguia, Cruz, Gomez, Gonzalez, Monroy, Reyez, Lozano, Garcia, Perez, Ramirez, Serrano, Sanabria, Chavez, Roman, Hernandez, Marin, Miranda, Magdaleno, Ortiz, Juarez, Medina, Mendoza, Luna, Lopez, Rodriguez, Alvarez, Sanchez, Martin, Jimenez, Ruiz, Diaz, Moreno, Muñoz, Romero, Alonso, Gutierrez, Torres, Dominguez, Vazquez, Ramos, Gil, Blanco, Castro, Ortiz, Rubio, Nuñez, Sanz, Castillo, Prieto, Calvo, Gallego, Leon, Flores, Campos, Vega, Diez, Fuentes, Mora, Santiago, Carmona, Pastor, Soto, Bravo, Rojas]
   activerecord:
     errors:
       messages:
