@@ -8,7 +8,7 @@ class ClassdaysController < ApplicationController
   def index
     @classdays = Classday.all
 
-    render json: @classdays.sort_days
+    render json: @classdays
   end
 
   # POST /groups/:group_id/classdays
