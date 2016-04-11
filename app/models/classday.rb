@@ -8,7 +8,7 @@ class Classday < ActiveRecord::Base
   validates :day, presence: true
   validates :begin_time, presence: true
   validates :end_time, presence: true
-  validate :unique_classday_for_group
+  validate :unique_classday_for_group, on: :create
 
   def unique_classday_for_group
     if self.group

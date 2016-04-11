@@ -29,7 +29,7 @@ class ClassdaysController < ApplicationController
   # PATCH/PUT /groups/:group_id/classdays/:id.json
 
   def update
-    if @classday.update(classday_params)
+    if @classday.update_attributes(classday_params)
       render json: @classday, status: 200, location: group_classdays_url(@classday)
     else
       render json: @classday.errors, status: :unprocessable_entity
