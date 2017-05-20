@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  belongs_to :user
   # A group has many class days
   has_many :classdays, dependent: :destroy
   # A group has many classes specified through the class day
@@ -26,7 +27,7 @@ class Group < ActiveRecord::Base
   def add_classes_to_day(classday)
     counter = 0
     day_found = false
-    while((current_date = begin_date + counter) <= end_date)
+    while((current_date = self.begin_date + counter) <= self.end_date)
       spanish_day = I18n.l(current_date, format: "%A")
       if(!day_found && (spanish_day == classday.day))
         day_found = true

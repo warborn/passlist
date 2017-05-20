@@ -1,16 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.new(first_name: 'Ivan', last_name: 'Munguia', maiden_name: 'Cruz', email: 'ivanalejandro249@gmail.com', password: 'password', password_confirmation: 'password')
+user.skip_confirmation!
+user.save!
 
-# group = Group.create(name: "2101", subject: "Base de datos", retardment: 0, time_limit: "10:15")
-#
+group = user.groups.create(name: "2101", subject: "Base de datos", retardment: 0, time_limit: "10:15", begin_date: "2016-02-01", end_date: "2016-05-27", classdays_attributes: [
+	{day: "Lunes", begin_time: "08:00", end_time: "10:00"},
+	{day: "Miércoles", begin_time: "10:00", end_time: "12:00"},
+	{day: "Viernes", begin_time: "12:00", end_time: "14:00"}
+])
+
 # group.classdays.create(day: "Lunes", begin_time: "08:00", end_time: "10:00")
 # group.classdays.create(day: "Miércoles", begin_time: "10:00", end_time: "12:00")
 # group.classdays.create(day: "Viernes", begin_time: "12:00", end_time: "14:00")
+
+group.generate_calendar!
+
 #
 # begin_date = Date.parse("2016-02-01")
 # end_date   = Date.parse("2016-05-27")
@@ -21,11 +24,11 @@
 #   counter += 1
 # end
 #
-# 10.times do |i|
-#   str = i.to_s.rjust(2, "0")
-#   student = Student.new(account_number: "3#{str}306064", last_name: Faker::Name.last_name, maiden_name: Faker::Name.last_name, first_name: Faker::Name.first_name)
-#   group.students << student
-# end
+10.times do |i|
+  str = i.to_s.rjust(2, "0")
+  student = Student.new(account_number: "3#{str}306064", last_name: Faker::Name.last_name, maiden_name: Faker::Name.last_name, first_name: Faker::Name.first_name)
+  group.students << student
+end
 
 # monday.course_classes.create(date: "2016-02-01")
 # monday.course_classes.create(date: "2016-02-08")

@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
           :confirmable
 
   include DeviseTokenAuth::Concerns::User
+
+  has_many :groups
 end

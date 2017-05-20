@@ -14,6 +14,7 @@ group :development, :test do
   gem 'hirb', '~> 0.7.3'
   gem 'byebug', '~> 8.2', '>= 8.2.2'
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :production do

@@ -49,12 +49,15 @@ ActiveRecord::Schema.define(version: 20160408163808) do
     t.string   "name"
     t.integer  "retardment", default: 0
     t.time     "time_limit"
+    t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "subject"
     t.date     "begin_date"
     t.date     "end_date"
   end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
   create_table "groups_students", force: :cascade do |t|
     t.integer "group_id"
