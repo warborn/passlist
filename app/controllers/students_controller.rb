@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def assist
     @course_class = CourseClass.find(params[:course_class_id])
     @student = Student.find(params[:id])

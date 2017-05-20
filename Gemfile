@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 gem 'rails-api'
 gem 'spring', :group => :development
-gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+# gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'rails-i18n'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise_token_auth'

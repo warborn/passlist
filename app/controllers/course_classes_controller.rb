@@ -1,5 +1,5 @@
 class CourseClassesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :generate_assists, only: [:show]
 
   def active
@@ -17,7 +17,7 @@ class CourseClassesController < ApplicationController
     end
 
     render json: {
-      "classes": serialize(@course_class),
+      "class": serialize(@course_class),
       "students": serialize(@students)
     }
   end

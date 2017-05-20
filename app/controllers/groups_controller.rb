@@ -1,12 +1,12 @@
 class GroupsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_group, only: [:show, :update, :destroy]
 
   # GET /groups
   # GET /groups.json
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
 
     render json: @groups
   end
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
   # POST /tables.json
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
 
     if @group.save
       @group.generate_calendar!
