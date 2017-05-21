@@ -76,4 +76,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configures the locales that will be loaded from the i18n gem
+  config.i18n.available_locales = :es
+
+  #Devise mailer config
+  config.action_mailer.default_url_options = { host: 'https://unam-passlist.herokuapp.com/' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAILGUN_KEY'],
+    domain: ENV['MAILGUN_DOMAIN']
+  }
 end
