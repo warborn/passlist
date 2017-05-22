@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
         "classdays": serialize(@group.classdays)
         }, status: :created, location: @group
     else
-      render json: @group.errors, status: :unprocessable_entity
+      render json: { "errors": @group.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
