@@ -2,7 +2,7 @@ user = User.new(first_name: 'Ivan', last_name: 'Munguia', maiden_name: 'Cruz', e
 user.skip_confirmation!
 user.save!
 
-group = user.groups.create(name: "2101", subject: "Base de datos", retardment: 0, time_limit: "10:15", begin_date: "2016-02-01", end_date: "2016-05-27", classdays_attributes: [
+group = user.groups.create(name: "2101", subject: "Base de datos", begin_date: "2016-02-01", end_date: "2016-05-27", classdays_attributes: [
 	{day: "Lunes", begin_time: "08:00", end_time: "10:00"},
 	{day: "Miércoles", begin_time: "10:00", end_time: "12:00"},
 	{day: "Viernes", begin_time: "12:00", end_time: "14:00"}

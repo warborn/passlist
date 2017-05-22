@@ -15,7 +15,6 @@ class Group < ActiveRecord::Base
 
   # Validation
   validates :name, presence: true
-  validates :time_limit, presence: true
   validates :subject, presence: true
   validates :begin_date, presence: true
   validates :end_date, presence: true
