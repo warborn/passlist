@@ -28,11 +28,11 @@ class Student::Import
           end
           @imported_students << student
         else
-          errors.add(:import_errors, "#{$.} - #{student.errors.full_messages.join(",")}")
+          errors.add(:errors, "#{$.} - #{student.errors.full_messages.join(",")}")
         end
       end
     else
-      errors.add(:import_errors, "No file was sended")
+      errors.add(:errors, "No file was sended")
     end
   end
 
