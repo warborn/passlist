@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
         imported_students: serialize(@import.imported_students)
       }, status: :created
     else
-      render json: @import.errors
+      render json: @import.errors, status: :unprocessable_entity
     end
   end
 
